@@ -1,12 +1,20 @@
-import {Image, Pressable, SafeAreaView, ScrollView, Text} from 'react-native';
+import React from 'react';
+import {useRecoilState} from 'recoil';
+import {
+  Image,
+  Button,
+  Pressable,
+  View,
+  SafeAreaView,
+  ScrollView,
+  Text,
+} from 'react-native';
 import images from '../assets/images';
 import {normalizeFontSize} from '../assets/fontSize';
-import {useRecoilValue} from 'recoil';
 import {countState} from '../recoilState';
 
-const ProfileScreen = ({navigation, route}) => {
-  console.log('profile screen====');
-  const count = useRecoilValue(countState);
+function Counter({navigation}) {
+  const [count, setCount] = useRecoilState(countState);
   return (
     <SafeAreaView style={{marginHorizontal: normalizeFontSize(20), flex: 1}}>
       <Pressable
@@ -20,14 +28,12 @@ const ProfileScreen = ({navigation, route}) => {
         />
       </Pressable>
       <ScrollView style={{flex: 1, marginVertical: normalizeFontSize(10)}}>
-        <Text
-          onPress={() => {
-            navigation.navigate('Counter');
-          }}>
-          {route.params.name}'s profile {count}
-        </Text>
+        <View>
+          <Text>Count: {count}</Text>
+          <Button title="Add" onPress={() => setCount(count + 1)}></Button>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
-};
-export default ProfileScreen;
+}
+export default Counter;
