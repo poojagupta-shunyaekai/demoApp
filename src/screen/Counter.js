@@ -17,20 +17,59 @@ function Counter({navigation}) {
   const [count, setCount] = useRecoilState(countState);
   return (
     <SafeAreaView style={{marginHorizontal: normalizeFontSize(20), flex: 1}}>
-      <Pressable
-        onPress={() => {
-          navigation.goBack();
-        }}>
-        <Image
-          source={images.backIcon}
-          resizeMode="stretch"
-          style={{height: normalizeFontSize(24), width: normalizeFontSize(24)}}
-        />
-      </Pressable>
+      <View style={{flexDirection: 'row'}}>
+        <Pressable
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <Image
+            source={images.backIcon}
+            resizeMode="stretch"
+            style={{
+              height: normalizeFontSize(24),
+              width: normalizeFontSize(24),
+            }}
+          />
+        </Pressable>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: normalizeFontSize(16),
+            color: 'skyblue',
+            fontWeight: 600,
+            marginLeft: normalizeFontSize(10),
+          }}>
+          welcome to the counter page
+        </Text>
+      </View>
       <ScrollView style={{flex: 1, marginVertical: normalizeFontSize(10)}}>
-        <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
           <Text>Count: {count}</Text>
-          <Button title="Add" onPress={() => setCount(count + 1)}></Button>
+          <Pressable
+            style={{
+              marginLeft: 10,
+              borderWidth: 2,
+              borderColor: 'skyblue',
+              paddingHorizontal: 10,
+              paddingVertical: 2,
+              borderRadius: 4,
+            }}
+            onPress={() => setCount(count + 1)}>
+            <Text
+              style={{
+                textAlign: 'center',
+                fontSize: normalizeFontSize(16),
+                color: 'skyblue',
+                fontWeight: 600,
+              }}>
+              Add
+            </Text>
+          </Pressable>
         </View>
       </ScrollView>
     </SafeAreaView>

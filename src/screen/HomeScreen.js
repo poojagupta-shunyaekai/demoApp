@@ -1,6 +1,7 @@
-import {Button, SafeAreaView, View} from 'react-native';
+import {Button, SafeAreaView, Text, View} from 'react-native';
 import {useColorScheme} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {normalizeFontSize} from '../assets/fontSize';
 
 const HomeScreen = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -14,6 +15,14 @@ const HomeScreen = ({navigation}) => {
       style={{
         ...backgroundStyle,
       }}>
+      <Text
+        style={{
+          textAlign: 'center',
+          fontSize: normalizeFontSize(16),
+          color: 'green',
+        }}>
+        welcome to the home
+      </Text>
       <Button
         title="Go to Jane's profile"
         onPress={() => navigation.navigate('Profile', {name: 'Jane'})}
