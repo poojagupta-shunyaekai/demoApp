@@ -12,6 +12,7 @@ import {
 import images from '../assets/images';
 import {normalizeFontSize} from '../assets/fontSize';
 import {countState} from '../recoilState';
+import Slider from '../components/Slider';
 
 function Counter({navigation}) {
   const [count, setCount] = useRecoilState(countState);
@@ -71,6 +72,7 @@ function Counter({navigation}) {
             </Text>
           </Pressable>
         </View>
+        <Slider />
       </ScrollView>
     </SafeAreaView>
   );
